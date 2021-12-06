@@ -97,16 +97,26 @@ def get_ve(ve):
     except:
         return
 
+from ControllerQuyDinh import *
+from datetime import datetime
+
 def check_ve(ve):
-    quy_dinh = QuyDinh.query.filter(QuyDinh.QuyDinh=="TGDatVeTreNhat").first()
-    if quy_dinh:
-        day = int(quy_dinh.NoiDung)
-        time = ChuyenBay.query.filter(ChuyenBay.id==ve.Id_ChuyenBay, ChuyenBay.ThoiGianXuatPhat.__gt__(datetime.now()+timedelta(days=+day))).first()
-    else:
-        time = ChuyenBay.query.filter(ChuyenBay.id==ve.Id_ChuyenBay, ChuyenBay.ThoiGianXuatPhat.__gt__(datetime.now()+timedelta(days=+1))).first()
-    if time:
-        return true
-    return false
+    quyDinhDao = QuyDinhController()
+    
+    timeBay=ChuyenBay.query.filter(ChuyenBay.id==ve.Id_ChuyenBay).first()
+    
+    quyDinhDAO = QuyDinhController()
+    minDatVe = quyDinhDAO.ThoiGianDatVeToiThieu()
+    minDatVe= int(minDatVe.NoiDung)
+    chuyenBay = ChuyenBay.query.get(ve.id)
+    if(chuyenBay==None): return False
+    ThoiGianXuatPhat = chuyenBay.ThoiGianXuatPhat
+    diff_now = (ThoiGianXuatPhat-datetime.today())
+    diff_now = diff_now.days*24+diff_now.seconds//3600
+    
+    if(minDatVe>diff_now):
+        return False
+    return True
 
 def check_ve_moi(id_chuyen_bay, hang_ve):
     so_ghe = BangGiaVe.query.filter(BangGiaVe.Id_ChuyenBay==id_chuyen_bay,
