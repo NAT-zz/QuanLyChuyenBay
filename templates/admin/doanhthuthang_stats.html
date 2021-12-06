@@ -42,10 +42,8 @@
 let labels = [], info = [];
 
 {% for c in stats %}
-    {% if c[2] %}
         labels.push('{{ c.Id_ChuyenBay }}')
         info.push('{{ c.DoanhThu }}')
-    {% endif %}
 {% endfor %}
 
 let colors = []

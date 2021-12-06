@@ -270,25 +270,28 @@ def nhan_lich_post():
         listAllSB=SanBay.query.all()
         mess='success'
         contentMess='Nhập chuyến bay thành công!!!'
+        nhapLichDAO = NhapLichController()
+        
         
         if(checkInputDataNhanLich(data)!='success'):
             mess='error'
             contentMess=checkInputDataNhanLich(data)
-            return render_template("nhanlichchuyenbay.html",listAllMB=listAllMB,
-                               listAllSB=listAllSB,mess=mess,
-                               contentMess=contentMess)
-            
-        nhapLichDAO = NhapLichController()
-        result = nhapLichDAO.nhapLich(data)
-        if(result!=True):
-            mess='error'
-            contentMess=result
+        else:
+            result = nhapLichDAO.nhapLich(data)
+            if(result!=True):
+                mess='error'
+                contentMess=result
             
         quyDinhDAO = QuyDinhController()
         minBay= quyDinhDAO.ThoiGianBayToiThieu().NoiDung
         soTG = quyDinhDAO.SoSanBayTrungGianToiDa().NoiDung
         minDung=quyDinhDAO.ThoiGianDungToiThieu().NoiDung
         maxDung=quyDinhDAO.ThoiGianDungToiDa().NoiDung
+
+        '''
+        return render_template("nhanlichchuyenbay.html",listAllMB=listAllMB,
+                               listAllSB=listAllSB,
+                        minBay=minBay,soTG=soTG,minDung=minDung,maxDung=maxDung)'''
 
         return render_template("nhanlichchuyenbay.html",listAllMB=listAllMB,
                                listAllSB=listAllSB,mess=mess,
