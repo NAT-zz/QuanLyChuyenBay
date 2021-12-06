@@ -160,12 +160,10 @@
                   <div class="tab-content">
                   <div id="tab-1" class="tab-pane row-fluid fade in active">
                     {% for q in quy_dinh %}
-                        {% if q.QuyDinh == 'TGDatVeTreNhat' %}
-                            <p class="margin-bottom-10">Thời Gian Đặt Vé Trễ Nhất : {{ q.NoiDung }}</p>
-                        {% elif q.QuyDinh == 'TGHuyVeTreNhat' %}
-                            <p class="margin-bottom-10">Thời Gian Hủy Vé Trễ Nhất : {{ q.NoiDung }}</p>
-                        {% else %}
-                            <p class="margin-bottom-10">Quy định khác...</p>
+                        {% if q.QuyDinh == 'ThoiGianDatVeToiThieu' %}
+                            <p class="margin-bottom-10">Thời Gian Đặt Vé Trễ Nhất : {{ q.NoiDung }}h</p>
+                        {% elif q.QuyDinh == 'ThoiGianChinhSuaVeToiThieu' %}
+                            <p class="margin-bottom-10">Thời Gian Hủy Vé Trễ Nhất : {{ q.NoiDung }}h</p>
                         {% endif %}
                     {% endfor %}
                   </div>
@@ -175,16 +173,15 @@
                         {% for q in quy_dinh %}
                             {% if q.QuyDinh == 'SoLuongSanBay' %}
                                 <p class="margin-bottom-10">Số lượng sân bay : {{ q.NoiDung }}</p>
-                            {% elif q.QuyDinh == 'TGBayToiThieu' %}
-                                <p class="margin-bottom-10">Thời Gian Bay Tối Thiểu : {{ q.NoiDung }}</p>
-                            {% elif q.QuyDinh == 'SanBayTGToiDa' %}
+                            {% elif q.QuyDinh == 'ThoiGianToiThieu' %}
+                                <p class="margin-bottom-10">Thời Gian Bay Tối Thiểu : {{ q.NoiDung }}min</p>
+                            {% elif q.QuyDinh == 'SoSanBayTrungGianToiDa' %}
                                 <p class="margin-bottom-10">Sân Bay Trung Gian Tối Đa : {{ q.NoiDung }}</p>
-                            {% elif q.QuyDinh == 'TGDungToiThieu' %}
-                                <p class="margin-bottom-10">Thời Gian Dừng Tối Thiểu : {{ q.NoiDung }}</p>
-                            {% elif q.QuyDinh == 'TGDungToiDa' %}
-                                <p class="margin-bottom-10">Thời Gian Dừng Tối Đa : {{ q.NoiDung }}</p>
-                            {% else %}
-                                <p class="margin-bottom-10">Quy đinh khác...</p>
+                            {% elif q.QuyDinh == 'ThoiGianDungToiThieu' %}
+                                <p class="margin-bottom-10">Thời Gian Dừng Tối Thiểu : {{ q.NoiDung }}min</p>
+                            {% elif q.QuyDinh == 'ThoiGianDungToiDa' %}
+                                <p class="margin-bottom-10">Thời Gian Dừng Tối Đa : {{ q.NoiDung }}min</p>
+    
                             {% endif %}
                         {% endfor %}
                     {% endif %}
