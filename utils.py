@@ -108,7 +108,7 @@ def check_ve(ve):
     quyDinhDAO = QuyDinhController()
     minDatVe = quyDinhDAO.ThoiGianDatVeToiThieu()
     minDatVe= int(minDatVe.NoiDung)
-    chuyenBay = ChuyenBay.query.get(ve.id)
+    chuyenBay = ChuyenBay.query.get(ve.Id_ChuyenBay)
     if(chuyenBay==None): return False
     ThoiGianXuatPhat = chuyenBay.ThoiGianXuatPhat
     diff_now = (ThoiGianXuatPhat-datetime.today())
