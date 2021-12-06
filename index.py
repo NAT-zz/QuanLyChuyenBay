@@ -379,7 +379,7 @@ def info_ve():
 def check_ve(id_ve):
     ve = utils.get_ve(id_ve)
     if ve:
-        if utils.check_ve(ve)==true:
+        if utils.check_ve(ve):
             return jsonify({
                 "error_code": 200
             })
