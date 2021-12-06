@@ -65,17 +65,17 @@
                     </ul>
                     <p>Đi từ sân bay {{ f.sanbay_di.TenSB}} đến sân bay {{ f.sanbay_den.TenSB}} </p> 
                     {% for v in f.banggia %}
-                    {% if v.HangVe == "Thường" %}
+                    {% if v.HangVe == "Thuong" %}
                         <p>| Giá chỉ từ {{ v.GiaVe }} VND</p>
                     {% endif %}
                     {% endfor %}
                     {% if current_user.VaiTro == "K" %}
                     <div class="row">
                         <div class="col-md-4">
-                            <input type="number" name="soluong" id="soluong{{f.id}}" class="form-control" placeholder="Nhập số lượng vé">
+                            <input type="number" name="soluong" id="soluong{{f.id}}" class="form-control" placeholder="Nhập số lượng vé" required>
                         </div>
                         <div class="col-md-5 padding-left-0">
-                            <select class="form-control" id="mySelect{{f.id}}">
+                            <select class="form-control" id="mySelect{{f.id}}" required>
                                 {%for BangGiaVe in ListBangGiaVe%}
                                 {%if BangGiaVe.Id_ChuyenBay==f.id%}
                                 <option value="{{BangGiaVe.HangVe}}">{{BangGiaVe.HangVe}}</option>

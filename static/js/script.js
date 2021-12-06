@@ -28,7 +28,7 @@ function doiVe(ve, id_chuyenBay, hangVe) {
             return res.json()
         }).then(function(data) {
             if (data.error_code == 200) {
-                alert("Đổi vé thành công!")
+                alert("Đổi vé thành công! Vui lòng kiểm tra gmail!!")
             } 
             else{
                 if (data.error_code == 404)
